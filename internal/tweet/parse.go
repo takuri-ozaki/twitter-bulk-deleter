@@ -17,13 +17,14 @@ type Tweet struct {
 }
 
 func Parse(start, end time.Time) ([]int64, int, error) {
-	raw, err := ioutil.ReadFile("/Users/ozaki/go/src/twitter-bulk-deleter/tweet.json")
+	raw, err := ioutil.ReadFile("./tweet.js")
 	if err != nil {
 		return []int64{}, 0, err
 	}
 
 	var tweets []Entity
-	err = json.Unmarshal(raw, &tweets)
+	prefix := "window.YTD.tweet.part0 = "
+	err = json.Unmarshal(raw[len(prefix):], &tweets)
 	if err != nil {
 		return []int64{}, 0, err
 	}
