@@ -2,4 +2,4 @@
 vendor/
 
 .env
-tweet.json
+tweet.js
